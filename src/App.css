@@ -1,0 +1,27 @@
+body {
+  text-align: center;
+}
+
+.outerBox {
+  border: 5px solid blue;
+  margin: 50px;
+}
+
+.outerBox h1 {
+  color: blue;
+}
+
+.scoreBox {
+}
+
+.individualScores{
+  border: 2px black solid;
+  list-style-type: none;
+}
+
+.scoreBox h3 {
+  color: blue;
+}
+
+
+
