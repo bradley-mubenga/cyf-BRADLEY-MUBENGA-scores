@@ -40,7 +40,7 @@ function App() {
       <WorldWide changeWorldWide={changeWorldWide} isWorldWide={isWorldWide}/>
 
       <div className="outerBox">
-        <h1> { isWorldWide ? "High Scores Per Country" : "Individual Scores"}</h1>
+        <h1> { isWorldWide ? "High Scores Per Country" : "WorldWide Scores"}</h1>
 
         <HighScoreTable scoresData={allCountryScores} scoreState={scoreState} isWorldWide={isWorldWide} />
       </div>
