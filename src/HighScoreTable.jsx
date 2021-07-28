@@ -1,5 +1,7 @@
+//Modules
 import React, { useState, useEffect } from 'react';
 
+//React Components
 import PlayerScore from './PlayerScore';
 
 //Score Board Functional Component With The Scores Data Passed As A Prop.
@@ -18,7 +20,22 @@ export default function ScoreBoard({ scoresData }) {
         }
     }, [scoresData]);
 
-    //Mappping through the score data and creating the HTML elements
+    //Mappping through the score data and creating the HTML elements.
+    scoresData.sort((a, b) => {
+        let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+        if (fa < fb) {
+            return -1;
+        }
+
+        if (fa > fb) {
+            return 1;
+        }
+
+        return 0;
+    });
+
     let ScoreBoardHTML = scoresData.map((scoreData, index) => 
         <div className="scoreBox" key={index}>
             <h3>{ scoreData.name }</h3>
@@ -26,6 +43,6 @@ export default function ScoreBoard({ scoresData }) {
         </div>
     )
     
-    //Checking the state of the data, if the state is favourable we show the scores in the DOM
+    //Checking the state of the data, if the state is favourable we show the scores in the DOM.
     return isData ? ScoreBoardHTML : "NO SCORE DATA AVAILIBLE";
 }
