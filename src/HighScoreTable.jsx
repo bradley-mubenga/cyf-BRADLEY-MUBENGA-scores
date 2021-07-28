@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import PlayerScore from './PlayerScore';
 
 //Score Board Functional Component With The Scores Data Passed As A Prop.
-export default function ScoreBoard({ scoresData, scoreState }) {
+export default function ScoreBoard({ scoresData, scoreState, isWorldWide }) {
     //The current state of the data, is there data present in the props or not?
     const [ isData, setData ] = useState(false);
     
@@ -39,7 +39,8 @@ export default function ScoreBoard({ scoresData, scoreState }) {
     //Mappping through the score data and creating the HTML elements.
     let ScoreBoardHTML = scoresData.map((scoreData, index) =>
         <div className="scoreBox" key={index}>
-            <h3>{ scoreData.name }</h3>
+            
+            { isWorldWide ? <h3>{ scoreData.name }</h3> : ""}
             <PlayerScore playerScores={scoreData.scores} scoreState={scoreState}/>
         </div>
     )

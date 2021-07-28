@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 export default function Single({ showSingleScores }) {
 
     return (
-        <button onClick={showSingleScores}>Single Scores</button>
+        <button onClick={showSingleScores}>Sort Scores </button>
     )
 }
