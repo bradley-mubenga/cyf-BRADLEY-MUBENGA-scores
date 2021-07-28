@@ -5,11 +5,11 @@ import React, { useState, useEffect } from 'react';
 import PlayerScore from './PlayerScore';
 
 //Score Board Functional Component With The Scores Data Passed As A Prop.
-export default function ScoreBoard({ scoresData }) {
+export default function ScoreBoard({ scoresData, scoreState }) {
     //The current state of the data, is there data present in the props or not?
     const [ isData, setData ] = useState(false);
     
-    //Every time the page loades we check if we have data in the props and set the state accordingly.
+    //Every time the page loads we check if we have data in the props and set the state accordingly.
     useEffect(() => {
         if (scoresData.length === 0) {
             setData(false);
@@ -20,7 +20,7 @@ export default function ScoreBoard({ scoresData }) {
         }
     }, [scoresData]);
 
-    //Mappping through the score data and creating the HTML elements.
+    //Sorting array by the first name without case sensitivity
     scoresData.sort((a, b) => {
         let fa = a.name.toLowerCase(),
             fb = b.name.toLowerCase();
@@ -36,10 +36,11 @@ export default function ScoreBoard({ scoresData }) {
         return 0;
     });
 
-    let ScoreBoardHTML = scoresData.map((scoreData, index) => 
+    //Mappping through the score data and creating the HTML elements.
+    let ScoreBoardHTML = scoresData.map((scoreData, index) =>
         <div className="scoreBox" key={index}>
             <h3>{ scoreData.name }</h3>
-            <PlayerScore playerScores={scoreData.scores}/>
+            <PlayerScore playerScores={scoreData.scores} scoreState={scoreState}/>
         </div>
     )
     
